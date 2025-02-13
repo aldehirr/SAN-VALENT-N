@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>San Valentín</title>
+    <!-- Importación de Tailwind CSS para estilos -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Importación de Font Awesome para iconos -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+    <style>
+        /* Estilo para el contenedor del video de fondo */
+        .video-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            object-fit: cover;
+        }
+
+        /* Estilo para las notas de amor */
+        .love-note {
+            font-family: 'Georgia', 'Times New Roman', Times, serif; /* Estilo de letra */
+            font-size: 12px; /* Tamaño de letra */
+            color: white; /* Color de texto */
+            text-align: justify; /* Alineación del texto */
+            line-height: 1s; /* Espaciado entre líneas */
+            width: 210px; /* Ancho de la nota */
+            padding: 10px; /* Espaciado interno */
+            background-color: transparent; /* Color de fondo */
+            border-radius: 10px; /* Bordes redondeados */
+            box-shadow: 5px 5px 10px rgba(45, 55, 0, 20); /* Sombra */
+        }
+
+        /* Estilo para el contenedor de la carta */
+        .card-container {
+            background-image: url('https://media.istockphoto.com/id/174667588/photo/old-yellowish-paper.jpg?s=612x612&w=0&k=20&c=M734QeFJf-Sl5HPFYjlcI1hEJZ7RfJJ_1abVbZ0ZtUc=');
+            background-size: cover;
+            font-family: 'Georgia', serif; /* Estilo de letra */
+            font-size: 22px; /* Tamaño de letra */
+            color: black; /* Color de texto */
+            text-align: justify; /* Alineación del texto */
+            text-shadow: 1px 1px 2px white, -1px -1px 2px white, 1px -1px 2px white, -1px 1px 2px white; /* Sombra de texto */
+        }
+
+        /* Estilo para las imágenes en las notas de amor */
+        .love-note img {
+            width: 100%;
+            height: 200px; /* Altura fija para las imágenes */
+            object-fit: cover; /* Ajuste de la imagen */
+            border-radius: 8px; /* Bordes redondeados */
+            margin-bottom: 5px; /* Espaciado inferior */
+        }
+
+        /* Estilo para el botón de siguiente en forma de corazón */
+        .heart-button {
+            background-color: transparent;
+            border: none;
+            cursor: pointer;
+            font-size: 2rem;
+            color: red;
+            position: fixed;
+            right: 20px;
+            bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .heart-button span {
+            font-size: 1rem;
+            color: black;
+        }
+    </style>
+</head>
+<body>
+    <!-- Video de fondo en 4K -->
+    <video class="video-background" autoplay loop muted>
+        <source src="https://media.istockphoto.com/id/146102314/ro/video/falling-in-love-cu-fundal-ro%C8%99u-frumos.mp4?s=mp4-640x640-is&k=20&c=-jCGNDLQn_GVtLFhGGQBPX5RqXIdmM5ZifXrOHW4Pv8=" type="video/mp4">
+    </video>
+
+    <!-- Contenedor principal -->
+    <div class="relative h-screen flex items-center justify-center">
+        <!-- Botón de carta inicial con imagen de sobre -->
+        <div class="relative p-8 rounded-lg shadow-lg animate-bounce" id="envelopeContainer">
+            <button class="relative flex items-center justify-center w-84 h-36 overflow-hidden p-0" id="openCard">
+                <!-- Imagen de fondo -->
+                <img src="Imagen1.png" alt="Sobre" class="w-full h-full object-cover"/>
+                <!-- Texto en la esquina -->
+                <span class="absolute bottom-4 left-4 text-Black text- Times New Roman font-bold bg-opacity -2 px-20 py-20 rounded">
+                    MI AMOR
+                </span>
+            </button>
+        </div>
+
+        <!-- Sección de contenido de la carta (inicialmente oculta) -->
+        <div class="hidden fixed inset-0 bg-opacity-90 flex flex-col items-center justify-center p-4" id="cardContent">
+            <div class="w-[800px] h-[800px] bg-white rounded-lg shadow-lg ps-4 relative overflow-hidden card-container">
+                <!-- Contenedor para el área de texto con scrollbar oculto -->
+                <div class="w-full h-full overflow-hidden relative">
+                    <textarea id="loveLetter" class="w-full h-full p-8 bg-transparent resize-none border-none scrollbar-hide" readonly>
+                    Mi amor,
+                    
+                    Me encanta tu sonrisa, que ilumina cada rincón de mi día, y tu mirada, que siempre transmite tanto cariño. Siento que a tu lado puedo ser yo mismo, sin máscaras ni miedos, y esa es una de las cosas más maravillosas que me das. Por eso te quería decir, gracias.
+                    
+                    No sabes cuanta alegría me da poder compartir este momento de nuestras vidas, con sus retos, alegrías y cada pequeño instante que vivimos. Saber que estamos caminando juntos, que nos apoyamos mutuamente y que vamos construyendo una historia llena de amor, me hace sentir una paz inmensa. No sé qué nos deparará el futuro, pero sé que, con la fuerza de nuestro amor, cualquier cosa es posible.
+                    
+                    Es muy bueno sentir cómo desde el principio hemos conectado de una manera tan natural. Cada conversación, cada risa, y cada pequeño momento que compartimos me hace sentir que hay algo único entre nosotros. Adoro la forma en que haces que todo sea más ligero, cómo tu presencia me llena de tranquilidad y emoción al mismo tiempo. Cada vez que estamos juntos, siento que el mundo se detiene un poco y todo cobra más sentido.
+                    
+                    Quiero que sepas que estoy aquí, con ganas de conocerte más, de compartir risas, momentos y todo lo que la vida nos traiga. Gracias por dejarme ser parte de tu vida en este momento.
+                    
+                    Cada día sin ti me recuerda lo mucho que significas en mi vida. Extraño tu risa, tus abrazos y hasta esos pequeños momentos cotidianos que compartíamos. A veces, solo el hecho de no poder mirarte a los ojos o tomarte de la mano se siente como un gran vacío... Al mismo tiempo creo que esta distancia no es más que una prueba más de la fuerza de nuestro amor.
+                    
+                    Cada día que pasa es un día menos para volver a encontrarnos, y eso me da fuerzas. Pienso en el momento en que por fin podré abrazarte de nuevo, en cómo será verte después de tanto tiempo y cómo, sin importar el tiempo o la distancia, todo volverá a sentirse como en casa contigo.
+                    Mi corazón siempre está contigo y el amor que siento por ti solo crece. No hay nada que me haga dudar de que todo esto merece la pena porque sé que el final de esta espera será estar juntos de nuevo. Te amo.
+                    </textarea>
+                </div>
+            </div>
+
+            <!-- Botón Siguiente con corazón y texto -->
+            <button class="heart-button" id="nextNote">
+                &#10084; <span>Siguiente</span>
+            </button>
+        </div>
+
+        <!-- Sección de notas de amor (inicialmente oculta) -->
+        <div class="hidden fixed inset-0 bg-opacity-100 flex flex-col items-center justify-center p-4" id="loveNotes">
+            <!-- Grid de notas de amor -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                <!-- Notas individuales -->
+                <div class="love-note">
+                    <img alt="Imagen de amor 1" src="https://i.pinimg.com/236x/31/9c/8c/319c8cd13b1c91cd2555764f0429a5be.jpg"/>
+                    <p>Todos tenemos un destino; tú eres el mío (ya que te encontre).</p>
+                </div>
+                <div class="love-note">
+                    <img alt="Imagen de amor 2" src="https://cdn0.matrimonios.cl/article/2909/original/1280/png/69092-plantilla-1-es-6.jpeg"/>
+                    <p>Todo el mundo debería tener un amor verdadero y debería durar como mínimo toda la vida</p>
+                </div>
+                <div class="love-note">
+                    <img alt="Imagen de amor 3" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRa7CrdvWAIeQvvrykEv_-sn0WASW5KOmh4pJASEVcWfhXIocbTnAghVtGt5FgNLlBMcws&usqp=CAU"/>
+                    <p>Yo nunca sentí esto antes. Estoy exactamente donde quiero estar</p>
+                </div>
+                <div class="love-note">
+                    <img alt="Imagen de amor 1" src="data:image/jpeg;base64,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"/>
+                    <p>Quiero todo de ti, para siempre, tú y yo cada día</p>
+                </div>
+                <div class="love-note">
+                    <img alt="Imagen de amor 2" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcShE4LQK4PY_hYGrvrS5NeSJ4noFMieBVzPgw&s"/>
+                    <p>El amor involucra pasar tiempo juntos, pero estar separados puede llevar a amar aún más</p>
+                </div>
+                <div class="love-note">
+                    <img alt="Imagen de amor 3" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTky4RFRxqcWRnNC4Rw4Y-8q14I0eTDPh9ZtFxetJQhmV3UXu0MYPIOQ6xgE6F2yOdTEFE&usqp=CAUs"/>
+                    <p>Prometo amarte apasionadamente en todas las formas, ahora y para siempre</p>
+                </div>
+               </div>
+            <button class="bg-red-500 text-white px-4 py-2 rounded-lg mt-4" id="showAlbum">
+                &#10084;   Ver Álbum
+            </button>
+        </div>
+
+<!-- Sección de álbum de fotos (inicialmente oculta) -->
+<div class="hidden fixed inset-0 bg-white bg-opacity-20 flex flex-col items-center justify-center p-4" id="photoAlbum">
+    <!-- Música de fondo -->
+    <audio id="backgroundMusic" loop>
+        <source src="te amare.mp3" type="audio/mpeg">
+        Tu navegador no soporta el elemento de audio.
+    </audio>
+
+    <!-- Contenedor principal con flex para organizar los videos y el carrusel -->
+    <div class="flex w-full h-full">
+        <!-- Cuadro de video izquierdo -->
+        <div class="w-1/4 flex items-center justify-center">
+            <video controls class="w-full h-auto max-h-[70vh] rounded-lg shadow-2xl border-12 border-pink" id="leftVideo">
+                <source src="v1.mp4" type="video/mp4">
+                Tu navegador no soporta el elemento de video.
+            </video>
+        </div>
+
+        <!-- Carrusel de imágenes -->
+        <div class="w-[50%] relative overflow-hidden">
+            <div class="absolute inset-0 flex transition-transform duration-500" id="carousel">
+                <div class="min-w-full flex items-center justify-center">
+                    <img alt="Foto 1" src="F8.jpeg" class="w-full h-auto rounded-lg shadow-2xl border-4 border-white"/>
+                </div>
+                <div class="min-w-full flex items-center justify-center">
+                    <img alt="Foto 2" src="u1.jpg" class="w-full h-auto rounded-lg shadow-2xl border-4 border-white"/>
+                </div>
+                <div class="min-w-full flex items-center justify-center">
+                    <img alt="Foto 3" src="F2.jpg" class="w-full h-auto rounded-lg shadow-2xl border-4 border-white"/>
+                </div>
+                <div class="min-w-full flex items-center justify-center">
+                    <img alt="Foto 4" src="tu.jpg" class="w-full h-auto rounded-lg shadow-2xl border-4 border-white"/>
+                </div>
+                <div class="min-w-full flex items-center justify-center">
+                    <img alt="Foto 5" src="F6.jpeg" class="w-full h-auto rounded-lg shadow-2xl border-4 border-white"/>
+                </div>
+                <div class="min-w-full flex items-center justify-center">
+                    <img alt="Foto 5" src="F3.jpg" class="w-full h-auto rounded-lg shadow-2xl border-4 border-white"/>
+                </div>
+                <div class="min-w-full flex items-center justify-center">
+                    <img alt="Foto 5" src="F9.jpeg" class="w-full h-auto rounded-lg shadow-2xl border-4 border-white"/>
+                </div>
+            </div>
+        </div>
+
+        <!-- Cuadro de video derecho -->
+        <div class="w-1/4 flex items-center justify-center">
+            <video controls class="w-full h-auto max-h-[70vh] rounded-lg shadow-2xl border-12 border-white" id="rightVideo">
+                <source src="v2.mp4" type="video/mp4">
+                Tu navegador no soporta el elemento de video.
+            </video>
+        </div>
+    </div>
+
+    <!-- Botones de navegación del carrusel -->
+    <div class="mt-4 flex space-x-4">
+        <button class="text-red-500 text-4xl" onclick="prevImage()">❤️</button>
+        <button class="text-red-500 text-4xl" onclick="nextImage()">❤️</button>
+    </div>
+
+    <!-- Letras "R" y "Y" en 3D con imágenes animadas -->
+    <div class="mt-4 text-2xl font-bold transform-style-3d">
+        <span class="inline-block transform rotate-x-60 rotate-y-30">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR1jIAHZhR-G0bqZw1B6vjK1LvXJtJY-JBC4OFE3CvGF1W3aZJQsBhYUwZz4k2c82Vgh7E&usqp=CAU" alt="A" class="w-16 h-16"/>
+        </span>
+        &amp;
+        <span class="inline-block transform rotate-x-90 rotate-y-60">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTkbHTHBJZlBDHf28sm7JbOcVtOeWVd7yA_HbECNn9hn7Ad4ot8DUHhVbNL2GB0Nc9zPDI&usqp=CAU" alt="Y" class="w-16 h-16"/>
+        </span>
+    </div>
+</div>
+
+<script>
+    // Script para el carrusel de imágenes
+    let currentIndex = 0;
+    const carousel = document.getElementById('carousel');
+    const totalImages = document.querySelectorAll('#carousel div').length;
+
+    function nextImage() {
+        currentIndex = (currentIndex + 1) % totalImages;
+        carousel.style.transform = `translateX(-${currentIndex * 100}%)`;
+    }
+
+    function prevImage() {
+        currentIndex = (currentIndex - 1 + totalImages) % totalImages;
+        carousel.style.transform = `translateX(-${currentIndex * 100}%)`;
+    }
+
+    setInterval(nextImage, 5000);
+
+    // Control de música de fondo y videos
+    const backgroundMusic = document.getElementById('backgroundMusic');
+    const leftVideo = document.getElementById('leftVideo');
+    const rightVideo = document.getElementById('rightVideo');
+
+    // Función para pausar la música de fondo
+    function pauseBackgroundMusic() {
+        backgroundMusic.pause();
+    }
+
+    // Función para reanudar la música de fondo
+    function playBackgroundMusic() {
+        backgroundMusic.play();
+    }
+
+    // Eventos para el video izquierdo
+    leftVideo.addEventListener('play', () => {
+        pauseBackgroundMusic();
+    });
+
+    leftVideo.addEventListener('pause', () => {
+        if (rightVideo.paused) {
+            playBackgroundMusic();
+        }
+    });
+
+    leftVideo.addEventListener('ended', () => {
+        if (rightVideo.paused) {
+            playBackgroundMusic();
+        }
+    });
+
+    // Eventos para el video derecho
+    rightVideo.addEventListener('play', () => {
+        pauseBackgroundMusic();
+    });
+
+    rightVideo.addEventListener('pause', () => {
+        if (leftVideo.paused) {
+            playBackgroundMusic();
+        }
+    });
+
+    rightVideo.addEventListener('ended', () => {
+        if (leftVideo.paused) {
+            playBackgroundMusic();
+        }
+    });
+
+    // Iniciar la música de fondo automáticamente al cargar la página
+    window.addEventListener('load', () => {
+        backgroundMusic.play();
+    });
+</script>
+ 
+
+        <!-- Música de fondo -->
+        <audio id="backgroundMusic" loop>
+            <source src="te amare.mp3" type="audio/mpeg"/>
+            Tu navegador no soporta el elemento de audio.
+        </audio>
+
+        <script>
+            // Evento para abrir la carta
+            document.getElementById('openCard').addEventListener('click', function() {
+                // Oculta el sobre de la carta
+                document.getElementById('envelopeContainer').classList.add('hidden');
+                // Muestra el contenido de la carta
+                document.getElementById('cardContent').classList.remove('hidden');
+                // Inicia la música de fondo
+                document.getElementById('backgroundMusic').play();
+            });
+
+            // Evento para pasar a la sección de notas
+            document.getElementById('nextNote').addEventListener('click', function() {
+                document.getElementById('cardContent').classList.add('hidden');
+                document.getElementById('loveNotes').classList.remove('hidden');
+            });
+
+            // Evento para mostrar el álbum
+            document.getElementById('showAlbum').addEventListener('click', function() {
+                document.getElementById('loveNotes').classList.add('hidden');
+                document.getElementById('photoAlbum').classList.remove('hidden');
+            });
+        </script>
+    </div>
+</body>
+</html>
