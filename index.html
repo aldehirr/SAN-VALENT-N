@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>San Valentín</title>
+    <!-- Importación de Tailwind CSS para estilos -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Importación de Font Awesome para iconos -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+    <style>
+        /* Estilo para el contenedor del video de fondo */
+        .video-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            object-fit: cover;
+        }
+
+        /* Estilo para las notas de amor */
+        .love-note {
+            font-family: 'Georgia', 'Times New Roman', Times, serif; /* Estilo de letra */
+            font-size: 12px; /* Tamaño de letra */
+            color: white; /* Color de texto */
+            text-align: justify; /* Alineación del texto */
+            line-height: 1s; /* Espaciado entre líneas */
+            width: 210px; /* Ancho de la nota */
+            padding: 10px; /* Espaciado interno */
+            background-color: transparent; /* Color de fondo */
+            border-radius: 10px; /* Bordes redondeados */
+            box-shadow: 5px 5px 10px rgba(45, 55, 0, 20); /* Sombra */
+        }
+
+        /* Estilo para el contenedor de la carta */
+        .card-container {
+            background-image: url('https://media.istockphoto.com/id/174667588/photo/old-yellowish-paper.jpg?s=612x612&w=0&k=20&c=M734QeFJf-Sl5HPFYjlcI1hEJZ7RfJJ_1abVbZ0ZtUc=');
+            background-size: cover;
+            font-family: 'Georgia', serif; /* Estilo de letra */
+            font-size: 22px; /* Tamaño de letra */
+            color: black; /* Color de texto */
+            text-align: justify; /* Alineación del texto */
+            text-shadow: 10px 10px 20px yellow, -10px -1px 2px blue, 10px -10px 20px white, -1px 1px 2px white; /* Sombra de texto */
+        }
+
+        /* Estilo para las imágenes en las notas de amor */
+        .love-note img {
+            width: 100%;
+            height: 200px; /* Altura fija para las imágenes */
+            object-fit: cover; /* Ajuste de la imagen */
+            border-radius: 8px; /* Bordes redondeados */
+            margin-bottom: 5px; /* Espaciado inferior */
+        }
+
+        /* Nuevos estilos para botones de navegación */
+        .nav-button {
+            background-color: transparent;
+            border: none;
+            cursor: pointer;
+            font-size: 2rem;
+            color: red;
+            position: fixed;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 1000;
+        }
+
+        .prev-button {
+            left: 20px;
+        }
+
+        .next-button {
+            right: 20px;
+        }
+
+        /* Ajuste posición botón álbum */
+        #showAlbum {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 1000;
+        }
+
+        .heart-button span {
+            font-size: 1rem;
+            color: black;
+        }
+
+        .title {
+            font-family: 'forte', sans-serif; /* Cambia el tipo de letra */
+            font-size: 48px; /* Cambia el tamaño de la letra */
+            color: black; /* Color del texto (negro) */
+            text-shadow: 
+                -1px -1px 0 white,  
+                 1px -1px 0 white,
+                -1px  1px 0 white,
+                 1px  1px 0 white; /* Borde blanco */
+            text-align: center;
+            z-index: 1;
+        }
+        .ti {
+            font-family: 'forte', sans-serif; /* Cambia el tipo de letra */
+            font-size: 48px; /* Cambia el tamaño de la letra */
+            color: black; /* Color del texto (negro) */
+            text-shadow: 
+                -1px -1px 0 white,  
+                 1px -1px 0 white,
+                -1px  1px 0 white,
+                 1px  1px 0 white; /* Borde blanco */
+            text-align: center;
+            z-index: 1;
+        }
+
+        /* Estilo para las gotas de lluvia */
+.rain {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 2;
+}
+
+.drop {
+    position: absolute;
+    bottom: 100%;
+    width: 2px;
+    height: 60px;
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0));
+    animation: fall linear infinite;
+}
+
+@keyframes fall {
+    to {
+        transform: translateY(100vh);
+    }
+}
+    </style>
+</head>
+<body>
+    <!-- Video de fondo en 4K -->
+    <video class="video-background" autoplay loop muted>
+        <source src="https://media.istockphoto.com/id/146102314/ro/video/falling-in-love-cu-fundal-ro%C8%99u-frumos.mp4?s=mp4-640x640-is&k=20&c=-jCGNDLQn_GVtLFhGGQBPX5RqXIdmM5ZifXrOHW4Pv8=" type="video/mp4">
+    </video>
+    <div class="title">Feliz Día de San Valentín</div>
+    <div class="ti">Mi Pequeña</div>
+    <!-- Agregar las palabras "Te quiero" y "Te adoro" -->
+<div class="text-center mt-4">
+    <span class="text-black text-2xl font-new time Roman" style="text-shadow: -1px -1px 0 white, 1px -1px 0 white, -1px 1px 0 white, 1px 1px 0 white;">YASMINA</span>
+    <br>
+    <span class="text-black text-2xl font-bold" style="text-shadow: -1px -1px 0 white, 1px -1px 0 white, -1px 1px 0 white, 1px 1px 0 white;"></span>
+</div>
+    <!-- Contenedor principal -->
+    <div class="relative h-screen flex items-center justify-center">
+        <!-- Botón de carta inicial con imagen de sobre -->
+        <div class="relative p-8 rounded-lg shadow-lg animate-bounce" id="envelopeContainer">
+            <button class="relative flex items-center justify-center w-84 h-36 overflow-hidden p-0" id="openCard">
+                <!-- Imagen de fondo -->
+                <img src="Imagen1.png" alt="Sobre" class="w-full h-full object-cover"/>
+                <!-- Texto en la esquina -->
+                <span class="absolute bottom-4 left-4 text-Black text- Times New Roman font-bold bg-opacity -2 px-20 py-20 rounded">
+                    MI AMOR
+                </span>
+            </button>
+        </div>
+
+        <!-- Sección de contenido de la carta (inicialmente oculta) -->
+        <div class="hidden fixed inset-0 bg-opacity-90 flex flex-col items-center justify-center p-4" id="cardContent">
+            <div class="w-[800px] h-[800px] bg-white rounded-lg shadow-lg ps-8   relative overflow-hidden card-container">
+                <!-- Contenedor para el área de texto con scrollbar oculto -->
+                <div class="w-full h-full overflow-hidden relative">
+                    <textarea id="loveLetter" class="w-full h-full p-4 bg-transparent resize-none border-none scrollbar-hide" readonly>
+                Mi amor esta carta esta hecha con mucho cariño para ti,
+                    
+                    Me encanta tu sonrisa, que ilumina cada rincón de mi día, y tu mirada, que siempre transmite tanto cariño. Siento que a tu lado puedo ser yo mismo, sin máscaras ni miedos, y esa es una de las cosas más maravillosas que me das. Por eso te quería decir, gracias.
+                    
+                    No sabes cuanta alegría me da poder compartir este momento de nuestras vidas, con sus retos, alegrías y cada pequeño instante que vivimos. Saber que estamos caminando juntos, que nos apoyamos mutuamente y que vamos construyendo una historia llena de amor, me hace sentir una paz inmensa. No sé qué nos deparará el futuro, pero sé que, con la fuerza de nuestro amor, cualquier cosa es posible.
+                    
+                    Es muy bueno sentir cómo desde el principio hemos conectado de una manera tan natural. Cada conversación, cada risa, y cada pequeño momento que compartimos me hace sentir que hay algo único entre nosotros. Adoro la forma en que haces que todo sea más ligero, cómo tu presencia me llena de tranquilidad y emoción al mismo tiempo. Cada vez que estamos juntos, siento que el mundo se detiene un poco y todo cobra más sentido.
+                    
+                    Quiero que sepas que estoy aquí, con ganas de conocerte más, de compartir risas, momentos y todo lo que la vida nos traiga. Gracias por dejarme ser parte de tu vida en este momento.
+                    
+                    Cada día sin ti me recuerda lo mucho que significas en mi vida. Extraño tu risa, tus abrazos y hasta esos pequeños momentos cotidianos que compartíamos. A veces, solo el hecho de no poder mirarte a los ojos o tomarte de la mano se siente como un gran vacío... Al mismo tiempo creo que esta distancia no es más que una prueba más de la fuerza de nuestro amor.
+                    
+                    Cada día que pasa es un día menos para volver a encontrarnos, y eso me da fuerzas. Pienso en el momento en que por fin podré abrazarte de nuevo, en cómo será verte después de tanto tiempo y cómo, sin importar el tiempo o la distancia, todo volverá a sentirse como cuando estamos juntos.
+                    Mi corazón siempre está contigo y el amor que siento por ti solo crece. No hay nada que me haga dudar de que todo esto merece la pena porque sé que el final de esta espera será estar juntos de nuevo. 
+                            
+                    
+                                                        TE ADORO.
+
+
+                                                                                                  ATT: RARG
+                    </textarea>
+                </div>
+            </div>
+
+            <!-- Botón Siguiente con corazón y texto -->
+            <button class="heart-button" id="nextNote">
+                &#10084; <span> ----> </span>
+            </button>
+
+        </div>
+
+        <!-- Sección de notas de amor (inicialmente oculta) -->
+        <div class="hidden fixed inset-0 bg-opacity-100 flex flex-col items-center justify-center p-4" id="loveNotes">
+             <!-- Botón de retroceso -->
+            <button class="nav-button prev-button" onclick="goBack()">&#10084;</button>
+            <!-- Grid de notas de amor -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                <!-- Notas individuales -->
+                <div class="love-note">
+                    <img alt="Imagen de amor 1" src="https://i.pinimg.com/236x/31/9c/8c/319c8cd13b1c91cd2555764f0429a5be.jpg"/>
+                    <p>Todos tenemos un destino; tú eres el mío (ya que te encontre).</p>
+                </div>
+                <div class="love-note">
+                    <img alt="Imagen de amor 2" src="https://cdn0.matrimonios.cl/article/2909/original/1280/png/69092-plantilla-1-es-6.jpeg"/>
+                    <p>Todo el mundo debería tener un amor verdadero y debería durar como mínimo toda la vida</p>
+                </div>
+                <div class="love-note">
+                    <img alt="Imagen de amor 3" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRa7CrdvWAIeQvvrykEv_-sn0WASW5KOmh4pJASEVcWfhXIocbTnAghVtGt5FgNLlBMcws&usqp=CAU"/>
+                    <p>Yo nunca sentí esto antes. Estoy exactamente donde quiero estar</p>
+                </div>
+                <div class="love-note">
+                    <img alt="Imagen de amor 1" src="https://i.pinimg.com/564x/f4/25/19/f4251977248ffa55dbf014b689045992.jpg"/>
+                    <p>Porque sin buscarte, ando encontrándote por todos lados, especialmente cuando cierro los ojos</p>
+                </div>
+                <div class="love-note">
+                    <img alt="Imagen de amor 2" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcShE4LQK4PY_hYGrvrS5NeSJ4noFMieBVzPgw&s"/>
+                    <p>El amor involucra pasar tiempo juntos, pero estar separados puede llevar a amar aún más</p>
+                </div>
+                <div class="love-note">
+                    <img alt="Imagen de amor 3" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTky4RFRxqcWRnNC4Rw4Y-8q14I0eTDPh9ZtFxetJQhmV3UXu0MYPIOQ6xgE6F2yOdTEFE&usqp=CAUs"/>
+                    <p>Prometo amarte apasionadamente en todas las formas, ahora y para siempre</p>
+                </div>
+               </div>
+            <button class="nav-button next-button" onclick="goNext()">&#10084;</button>
+            <button class="bg-red-500 text-white px-4 py-2 rounded-lg" id="showAlbum">
+                &#10084; Ver Álbum
+            </button>
+        </div>
+
+<!-- Sección de álbum de fotos (inicialmente oculta) -->
+<div class="hidden fixed inset-0 bg-white bg-opacity-20 flex flex-col items-center justify-center p-4" id="photoAlbum">
+    <!-- Botón de retroceso -->
+    <button class="nav-button prev-button" onclick="goBack()">&#10084;</button>
+    <!-- Música de fondo -->
+    <audio id="backgroundMusic" loop>
+        <source src="te amare.mp3" type="audio/mpeg">
+        Tu navegador no soporta el elemento de audio.
+    </audio>
+
+    <!-- Contenedor principal con flex para organizar los videos y el carrusel -->
+    <div class="flex w-full h-full">
+        <!-- Cuadro de video izquierdo -->
+        <div class="w-1/4 flex items-center justify-center">
+            <video controls class="w-full h-auto max-h-[70vh] rounded-lg shadow-2xl border-12 border-pink" id="leftVideo">
+                <source src="v1.mp4" type="video/mp4">
+                Tu navegador no soporta el elemento de video.
+            </video>
+        </div>
+
+        <!-- Carrusel de imágenes -->
+        <div class="w-[50%] relative overflow-hidden">
+            <div class="absolute inset-0 flex transition-transform duration-500" id="carousel">
+                <div class="min-w-full flex items-center justify-center">
+                    <img alt="Foto 1" src="FOTOS/F8.jpeg" class="w-full h-auto rounded-lg shadow-2xl border-4 border-white"/>
+                </div>
+                <div class="min-w-full flex items-center justify-center">
+                    <img alt="Foto 2" src="FOTOS/u1.jpg" class="w-full h-auto rounded-lg shadow-2xl border-4 border-white"/>
+                </div>
+                <div class="min-w-full flex items-center justify-center">
+                    <img alt="Foto 3" src="FOTOS/F2.jpg" class="w-full h-auto rounded-lg shadow-2xl border-4 border-white"/>
+                </div>
+                <div class="min-w-full flex items-center justify-center">
+                    <img alt="Foto 4" src="FOTOS/tu.jpg" class="w-full h-auto rounded-lg shadow-2xl border-4 border-white"/>
+                </div>
+                <div class="min-w-full flex items-center justify-center">
+                    <img alt="Foto 5" src="FOTOS/F6.jpeg" class="w-full h-auto rounded-lg shadow-2xl border-4 border-white"/>
+                </div>
+                <div class="min-w-full flex items-center justify-center">
+                    <img alt="Foto 5" src="FOTOS/F3.jpg" class="w-full h-auto rounded-lg shadow-2xl border-4 border-white"/>
+                </div>
+                <div class="min-w-full flex items-center justify-center">
+                    <img alt="Foto 5" src="FOTOS/F9.jpeg" class="w-full h-auto rounded-lg shadow-2xl border-4 border-white"/>
+                </div>
+            </div>
+        </div>
+
+        <!-- Cuadro de video derecho -->
+        <div class="w-1/4 flex items-center justify-center">
+            <video controls class="w-full h-auto max-h-[70vh] rounded-lg shadow-2xl border-12 border-white" id="rightVideo">
+                <source src="v2.mp4" type="video/mp4">
+                Tu navegador no soporta el elemento de video.
+            </video>
+        </div>
+    </div>
+
+   <!-- Botones de navegación del carrusel -->
+   <div class="mt-4 flex space-x-4">
+    <button class="text-red-500 text-4xl" onclick="prevImage()">❤️</button>
+    <button class="text-red-500 text-4xl" onclick="nextImage()">❤️</button>
+</div>
+
+    <!-- Letras "R" y "Y" en 3D con imágenes animadas -->
+    <div class="mt-4 text-2xl font-bold transform-style-3d">
+        <span class="inline-block transform rotate-x-60 rotate-y-30">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR1jIAHZhR-G0bqZw1B6vjK1LvXJtJY-JBC4OFE3CvGF1W3aZJQsBhYUwZz4k2c82Vgh7E&usqp=CAU" alt="A" class="w-16 h-16"/>
+        </span>
+        &amp;
+        <span class="inline-block transform rotate-x-90 rotate-y-60">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTkbHTHBJZlBDHf28sm7JbOcVtOeWVd7yA_HbECNn9hn7Ad4ot8DUHhVbNL2GB0Nc9zPDI&usqp=CAU" alt="Y" class="w-16 h-16"/>
+        </span>
+    </div>
+</div>
+
+<script>
+
+    // Función para crear el efecto de lluvia
+function createRain() {
+    const rainContainer = document.createElement('div');
+    rainContainer.classList.add('rain');
+    document.body.appendChild(rainContainer);
+
+    const dropsCount = 100; // Número de gotas de lluvia
+
+    for (let i = 0; i < dropsCount; i++) {
+        const drop = document.createElement('div');
+        drop.classList.add('drop');
+        drop.style.left = `${Math.random() * 100}vw`;
+        drop.style.animationDuration = `${Math.random() * 0.5 + 0.5}s`;
+        drop.style.animationDelay = `${Math.random() * 2}s`;
+        rainContainer.appendChild(drop);
+    }
+}
+
+// Llamar a la función para crear la lluvia al cargar la página
+window.addEventListener('load', createRain);
+
+    // Función de navegación general
+    function goBack() {
+            const currentSection = getCurrentSection();
+            
+            if (currentSection === 'cardContent') {
+                showSection('envelopeContainer');
+            } else if (currentSection === 'loveNotes') {
+                showSection('cardContent');
+            } else if (currentSection === 'photoAlbum') {
+                showSection('loveNotes');
+            }
+        }
+
+        function goNext() {
+            const currentSection = getCurrentSection();
+            
+            if (currentSection === 'envelopeContainer') {
+                showSection('cardContent');
+            } else if (currentSection === 'cardContent') {
+                showSection('loveNotes');
+            } else if (currentSection === 'loveNotes') {
+                showSection('photoAlbum');
+            }
+        }
+
+        function getCurrentSection() {
+            if (!document.getElementById('envelopeContainer').classList.contains('hidden')) return 'envelopeContainer';
+            if (!document.getElementById('cardContent').classList.contains('hidden')) return 'cardContent';
+            if (!document.getElementById('loveNotes').classList.contains('hidden')) return 'loveNotes';
+            if (!document.getElementById('photoAlbum').classList.contains('hidden')) return 'photoAlbum';
+        }
+
+        function showSection(sectionId) {
+            document.querySelectorAll('[id$="Container"], [id$="Content"], [id$="Notes"], [id$="Album"]')
+                   .forEach(el => el.classList.add('hidden'));
+            document.getElementById(sectionId).classList.remove('hidden');
+        }
+
+        // Modificar evento de mostrar álbum
+        document.getElementById('showAlbum').addEventListener('click', function() {
+            showSection('photoAlbum');
+        });
+
+    // Script para el carrusel de imágenes
+    let currentIndex = 0;
+    const carousel = document.getElementById('carousel');
+    const totalImages = document.querySelectorAll('#carousel div').length;
+
+    function nextImage() {
+        currentIndex = (currentIndex + 1) % totalImages;
+        carousel.style.transform = `translateX(-${currentIndex * 100}%)`;
+    }
+
+    function prevImage() {
+        currentIndex = (currentIndex - 1 + totalImages) % totalImages;
+        carousel.style.transform = `translateX(-${currentIndex * 100}%)`;
+    }
+
+    setInterval(nextImage, 5000);
+
+    // Control de música de fondo y videos
+    const backgroundMusic = document.getElementById('backgroundMusic');
+    const leftVideo = document.getElementById('leftVideo');
+    const rightVideo = document.getElementById('rightVideo');
+
+    // Función para pausar la música de fondo
+    function pauseBackgroundMusic() {
+        backgroundMusic.pause();
+    }
+
+    // Función para reanudar la música de fondo
+    function playBackgroundMusic() {
+        backgroundMusic.play();
+    }
+
+    // Eventos para el video izquierdo
+    leftVideo.addEventListener('play', () => {
+        pauseBackgroundMusic();
+    });
+
+    leftVideo.addEventListener('pause', () => {
+        if (rightVideo.paused) {
+            playBackgroundMusic();
+        }
+    });
+
+    leftVideo.addEventListener('ended', () => {
+        if (rightVideo.paused) {
+            playBackgroundMusic();
+        }
+    });
+
+    // Eventos para el video derecho
+    rightVideo.addEventListener('play', () => {
+        pauseBackgroundMusic();
+    });
+
+    rightVideo.addEventListener('pause', () => {
+        if (leftVideo.paused) {
+            playBackgroundMusic();
+        }
+    });
+
+    rightVideo.addEventListener('ended', () => {
+        if (leftVideo.paused) {
+            playBackgroundMusic();
+        }
+    });
+
+    // Iniciar la música de fondo automáticamente al cargar la página
+    window.addEventListener('load', () => {
+        backgroundMusic.play();
+    });
+</script>
+ 
+        
+
+        <!-- Música de fondo -->
+        <audio id="backgroundMusic" loop>
+            <source src="te amare.mp3" type="audio/mpeg"/>
+            Tu navegador no soporta el elemento de audio.
+        </audio>
+
+        <script>
+            // Evento para abrir la carta
+            document.getElementById('openCard').addEventListener('click', function() {
+                // Oculta el sobre de la carta
+                document.getElementById('envelopeContainer').classList.add('hidden');
+                // Muestra el contenido de la carta
+                document.getElementById('cardContent').classList.remove('hidden');
+                // Inicia la música de fondo
+                document.getElementById('backgroundMusic').play();
+            });
+
+            // Evento para pasar a la sección de notas
+            document.getElementById('nextNote').addEventListener('click', function() {
+                document.getElementById('cardContent').classList.add('hidden');
+                document.getElementById('loveNotes').classList.remove('hidden');
+            });
+
+            // Evento para mostrar el álbum
+            document.getElementById('showAlbum').addEventListener('click', function() {
+                document.getElementById('loveNotes').classList.add('hidden');
+                document.getElementById('photoAlbum').classList.remove('hidden');
+            });
+        </script>
+    </div>
+</body>
+</html>
